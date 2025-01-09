@@ -26,11 +26,11 @@
             <column name="BIRTH_DATE" type="DATE"/>
             <column name="NOTES" type="CLOB"/>
             <column name="DELETED_BY" type="VARCHAR(255)"/>
-            <column name="DELETED_DATE" type="${offsetDateTime.type}"/>
+            <column name="DELETED_DATE" type="DATE"/>
             <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
-            <column name="LAST_MODIFIED_DATE" type="${offsetDateTime.type}"/>
+            <column name="LAST_MODIFIED_DATE" type="DATE"/>
             <column name="CREATED_BY" type="VARCHAR(255)"/>
-            <column name="CREATED_DATE" type="${offsetDateTime.type}"/>
+            <column name="CREATED_DATE" type="DATE"/>
             <column name="ADDRESS_ZIP_CODE" type="VARCHAR(9)"/>
             <column name="ADDRESS_STREET" type="VARCHAR(255)"/>
             <column name="ADDRESS_NUMBER_" type="VARCHAR(50)"/>
