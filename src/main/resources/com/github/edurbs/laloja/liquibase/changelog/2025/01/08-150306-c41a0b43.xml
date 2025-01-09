@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="LaLoja">
+        <createTable tableName="PERSON">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PERSON"/>
+            </column>
+            <column name="PERSON_TYPE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DOC_ID" type="VARCHAR(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INTERNAL_CODE" type="VARCHAR(255)"/>
+            <column name="EMAIL" type="VARCHAR(255)"/>
+            <column name="PHONE" type="VARCHAR(14)"/>
+            <column name="CELL_PHONE" type="VARCHAR(14)"/>
+            <column name="BIRTH_DATE" type="DATE"/>
+            <column name="NOTES" type="CLOB"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="${offsetDateTime.type}"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="${offsetDateTime.type}"/>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="${offsetDateTime.type}"/>
+            <column name="ADDRESS_ZIP_CODE" type="VARCHAR(9)"/>
+            <column name="ADDRESS_STREET" type="VARCHAR(255)"/>
+            <column name="ADDRESS_NUMBER_" type="VARCHAR(50)"/>
+            <column name="ADDRESS_COMPLEMENT" type="VARCHAR(255)"/>
+            <column name="ADDRESS_NEIGHBORHOOD" type="VARCHAR(255)"/>
+            <column name="ADDRESS_CITY" type="VARCHAR(255)"/>
+            <column name="ADDRESS_STATE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

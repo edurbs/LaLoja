@@ -18,7 +18,8 @@ repositories {
     mavenCentral()
     maven {
         url 'https://global.repo.jmix.io/repository/public'
-    }
+        }
+    maven { url 'https://maven.vaadin.com/vaadin-addons' }
 }
 
 dependencies {
@@ -42,6 +43,9 @@ dependencies {
     }
     testImplementation 'io.jmix.flowui:jmix-flowui-test-assist'
     implementation 'com.mysql:mysql-connector-j'
+    implementation 'io.jmix.translations:jmix-translations-pt-br'
+    implementation 'org.vaadin.addons.componentfactory:vcf-input-mask:2.2.0'
+    implementation 'org.vaadin:textfieldformatter:23.3.2'
 }
 
 configurations.implementation {

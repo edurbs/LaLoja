@@ -3,6 +3,7 @@
 
     <menu id="application" title="msg://com.github.edurbs.laloja/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.github.edurbs.laloja.view.user/UserListView.title"/>
+        <item view="Person.list" title="msg://com.github.edurbs.laloja.view.person/personListView.title"/>
     </menu>
 
 </menu-config>

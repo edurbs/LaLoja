@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://personDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="personDc"
+                  class="com.github.edurbs.laloja.entity.Person">
+            <fetchPlan extends="_instance_name">
+                <property name="personType"/>
+                <property name="docId"/>
+                <property name="internalCode"/>
+                <property name="email"/>
+                <property name="phone"/>
+                <property name="cellPhone"/>
+                <property name="birthDate"/>
+                <property name="address" fetchPlan="_base"/>
+                <property name="notes"/>
+            </fetchPlan>
+            <loader id="personDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="personDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="20em" columns="1"/>
+                <responsiveStep minWidth="40em" columns="3"/>
+            </responsiveSteps>
+            <select id="personTypeField" property="personType" required="true"/>
+            <textField id="docIdField" property="docId"/>
+            <textField id="internalCodeField" property="internalCode"/>
+            <textField id="nameField" property="name" required="true" colspan="3"/>
+            <textField id="emailField" property="email"/>
+            <textField id="phoneField" property="phone"/>
+            <textField id="cellPhoneField" property="cellPhone"/>
+            <datePicker id="birthDateField" property="birthDate" datatype="localDate" clearButtonVisible="true"
+            />
+            <textField id="addressZipCodeField" property="address.zipCode"/>
+            <textField id="addressStreetField" property="address.street" colspan="2"
+            />
+            <textField id="addressNumberField" property="address.number"/>
+            <textField id="addressComplementField" property="address.complement"/>
+            <textField id="addressNeighborhoodField" property="address.neighborhood"
+            />
+            <textField id="addressCityField" property="address.city"/>
+            <textField id="addressStateField" property="address.state"/>
+            <textArea id="notesField" height="9.5em" property="notes" colspan="3"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseButton" action="saveAction"/>
+            <button id="closeButton" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
