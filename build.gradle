@@ -66,4 +66,5 @@ idea {
 
 vaadin {
     optimizeBundle = false
+    productionMode = true
 }
