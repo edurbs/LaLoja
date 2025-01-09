@@ -50,8 +50,8 @@
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
-                <column property="docId" width="30px"/>
                 <column property="name" autoWidth="true" filterable="true"/>
+                <column property="docId" width="30px"/>
                 <column property="cellPhone" width="30px"/>
             </columns>
         </dataGrid>

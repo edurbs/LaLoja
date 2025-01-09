@@ -32,10 +32,10 @@
                 <responsiveStep minWidth="20em" columns="1"/>
                 <responsiveStep minWidth="40em" columns="3"/>
             </responsiveSteps>
+            <textField id="nameField" property="name" required="true" colspan="3"/>
             <select id="personTypeField" property="personType" required="true"/>
             <textField id="docIdField" property="docId"/>
             <textField id="internalCodeField" property="internalCode"/>
-            <textField id="nameField" property="name" required="true" colspan="3"/>
             <textField id="emailField" property="email"/>
             <textField id="phoneField" property="phone"/>
             <textField id="cellPhoneField" property="cellPhone"/>
