@@ -11,8 +11,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
@@ -26,10 +26,9 @@ public class IncomePayment {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
-    @Temporal(TemporalType.DATE)
-    @Column(name = "PAYMENT_DATE", nullable = false)
     @NotNull
-    private Date paymentDate;
+    @Column(name = "PAYMENT_DATE", nullable = false)
+    private LocalDate paymentDate;
     @JoinColumn(name = "INCOME_ID", nullable = false)
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -51,6 +50,14 @@ public class IncomePayment {
     @DeletedDate
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
+
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public LocalDate getPaymentDate() {
+        return paymentDate;
+    }
 
     public Income getIncome() {
         return income;
@@ -82,14 +89,6 @@ public class IncomePayment {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
-    }
-
-    public Date getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(Date paymentDate) {
-        this.paymentDate = paymentDate;
     }
 
     public OffsetDateTime getDeletedDate() {

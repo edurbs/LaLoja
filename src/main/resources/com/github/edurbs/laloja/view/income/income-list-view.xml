@@ -29,8 +29,9 @@
         <action id="discardAction" type="lookup_discard"/>
     </actions>
     <layout>
-        <propertyFilter dataLoader="incomesDl" operation="EQUAL" property="person" label="Pessoa" width="30em"
-                        maxWidth="100%"/>
+        <propertyFilter
+                id="personPropertyFilter" dataLoader="incomesDl" operation="EQUAL" property="person" label="Pessoa"
+                width="30em" maxWidth="100%"/>
         <genericFilter id="genericFilter"
                        dataLoader="incomesDl" visible="false">
             <properties include=".*"/>
@@ -46,18 +47,22 @@
                   minHeight="20em"
                   dataContainer="incomesDc"
                   columnReorderingAllowed="true"
-                  selectionMode="MULTI">
+        >
             <actions>
-                <action id="create" type="list_create"/>
+                <action id="create" type="list_create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
-                <column property="referenceDate" filterable="true"/>
-                <column property="person" filterable="true"/>
-                <column property="description" filterable="true"/>
-                <column property="total"/>
-                <column property="category"/>
+                <column property="person" filterable="true" autoWidth="true"/>
+                <column property="referenceDate" filterable="true" autoWidth="true"/>
+                <column property="total" autoWidth="true"/>
+                <column property="category" filterable="true" autoWidth="true"/>
+                <column property="description" filterable="true" autoWidth="true"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

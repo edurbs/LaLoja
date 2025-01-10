@@ -2,15 +2,42 @@ package com.github.edurbs.laloja.view.incomepayment;
 
 import com.github.edurbs.laloja.entity.IncomePayment;
 import com.github.edurbs.laloja.view.main.MainView;
+import com.vaadin.componentfactory.addons.inputmask.InputMask;
 import com.vaadin.flow.router.Route;
-import io.jmix.flowui.view.EditedEntityContainer;
-import io.jmix.flowui.view.StandardDetailView;
-import io.jmix.flowui.view.ViewController;
-import io.jmix.flowui.view.ViewDescriptor;
+import io.jmix.flowui.component.datepicker.TypedDatePicker;
+import io.jmix.flowui.component.textfield.TypedTextField;
+import io.jmix.flowui.view.*;
+import org.vaadin.textfieldformatter.NumeralFieldFormatter;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Route(value = "incomePayments/:id", layout = MainView.class)
 @ViewController(id = "IncomePayment.detail")
 @ViewDescriptor(path = "income-payment-detail-view.xml")
 @EditedEntityContainer("incomePaymentDc")
 public class IncomePaymentDetailView extends StandardDetailView<IncomePayment> {
+    @ViewComponent
+    private TypedDatePicker<Date> paymentDateField;
+
+    @ViewComponent
+    private TypedTextField<BigDecimal> totalField;
+
+    @Subscribe
+    public void onInit(final InitEvent event) {
+        new InputMask("00/00/0000").extend(paymentDateField);
+        paymentDateField.setValue(LocalDate.now());
+        new NumeralFieldFormatter.Builder()
+                .delimiter(".")
+                .decimalMark(",")
+                .decimalScale(2)
+                .build()
+                .extend(totalField);
+    }
+
+    @Subscribe
+    public void onInitEntity(final InitEntityEvent<IncomePayment> event) {
+        event.getEntity().setPaymentDate(LocalDate.now());
+    }
 }

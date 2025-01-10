@@ -23,23 +23,23 @@
         <formLayout id="form" dataContainer="incomeDc">
             <responsiveSteps>
                 <responsiveStep minWidth="0" columns="1"/>
-                <responsiveStep minWidth="40em" columns="2"/>
+                <responsiveStep minWidth="40em" columns="4"/>
             </responsiveSteps>
             <datePicker id="referenceDateField" property="referenceDate"/>
+            <textField id="totalField" property="total"/>
             <entityPicker id="personField" property="person">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
-            <textField id="descriptionField" property="description"/>
-            <textField id="totalField" property="total"/>
             <entityPicker id="categoryField" property="category">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
+            <textField id="descriptionField" property="description" colspan="4"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>
