@@ -6,6 +6,7 @@ import io.jmix.core.entity.annotation.EmbeddedParameters;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.core.metamodel.annotation.NumberFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.springframework.data.annotation.CreatedBy;
@@ -13,6 +14,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -61,6 +63,14 @@ public class Person {
             @AttributeOverride(name = "state", column = @Column(name = "ADDRESS_STATE"))
     })
     private Address address;
+    @NumberFormat(pattern = "#,##0.##", decimalSeparator = ",", groupingSeparator = ".")
+    @PositiveOrZero(message = "O limite de crédito deve ser positivo ou zero")
+    @Column(name = "CREDIT_LIMIT", nullable = false, precision = 19, scale = 2)
+    @NotNull
+    private BigDecimal creditLimit;
+    @NumberFormat(pattern = "#,##0.##", decimalSeparator = ",", groupingSeparator = ".")
+    @Column(name = "DEBIT_BALANCE", precision = 19, scale = 2)
+    private BigDecimal debitBalance;
     @Column(name = "NOTES")
     @Lob
     private String notes;
@@ -82,6 +92,22 @@ public class Person {
     @CreatedDate
     @Column(name = "CREATED_DATE")
     private OffsetDateTime createdDate;
+
+    public BigDecimal getDebitBalance() {
+        return debitBalance;
+    }
+
+    public void setDebitBalance(BigDecimal debitBalance) {
+        this.debitBalance = debitBalance;
+    }
+
+    public BigDecimal getCreditLimit() {
+        return creditLimit;
+    }
+
+    public void setCreditLimit(BigDecimal creditLimit) {
+        this.creditLimit = creditLimit;
+    }
 
     public String getNotes() {
         return notes;
