@@ -40,6 +40,8 @@
             <button id="createButton" action="incomesDataGrid.create"/>
             <button id="editButton" action="incomesDataGrid.edit"/>
             <button id="removeButton" action="incomesDataGrid.remove"/>
+            <button id="payButton" action="incomesDataGrid.addPayment" themeNames="success"
+                    icon="vaadin:money-exchange" enabled="false"/>
             <simplePagination id="pagination" dataLoader="incomesDl"/>
         </hbox>
         <dataGrid id="incomesDataGrid"
@@ -56,6 +58,7 @@
                 </action>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
+                <action id="addPayment" text="Receber"/>
             </actions>
             <columns resizable="true">
                 <column property="person" filterable="true" autoWidth="true"/>

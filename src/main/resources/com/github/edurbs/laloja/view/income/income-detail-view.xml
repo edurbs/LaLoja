@@ -25,14 +25,14 @@
                 <responsiveStep minWidth="0" columns="1"/>
                 <responsiveStep minWidth="40em" columns="4"/>
             </responsiveSteps>
-            <datePicker id="referenceDateField" property="referenceDate"/>
-            <textField id="totalField" property="total"/>
             <entityPicker id="personField" property="person">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
+            <datePicker id="referenceDateField" property="referenceDate"/>
+            <textField id="totalField" property="total"/>
             <entityPicker id="categoryField" property="category">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
