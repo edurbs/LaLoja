@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
-      title="msg://personListView.title"
-      focusComponent="personsDataGrid">
+      title="msg://categoryListView.title"
+      focusComponent="categoriesDataGrid">
     <data>
-        <collection id="personsDc"
-                    class="com.github.edurbs.laloja.entity.Person">
-            <fetchPlan extends="_instance_name">
-                <property name="docId"/>
-                <property name="cellPhone"/>
-            </fetchPlan>
-            <loader id="personsDl" readOnly="true">
+        <collection id="categoriesDc"
+                    class="com.github.edurbs.laloja.entity.Category">
+            <fetchPlan extends="_base"/>
+            <loader id="categoriesDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from Person e]]>
+                    <![CDATA[select e from Category e]]>
                 </query>
             </loader>
         </collection>
@@ -30,19 +27,19 @@
     </actions>
     <layout>
         <genericFilter id="genericFilter"
-                       dataLoader="personsDl" visible="false">
+                       dataLoader="categoriesDl" visible="false">
             <properties include=".*"/>
         </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button id="createButton" action="personsDataGrid.create"/>
-            <button id="editButton" action="personsDataGrid.edit"/>
-            <button id="removeButton" action="personsDataGrid.remove"/>
-            <simplePagination id="pagination" dataLoader="personsDl"/>
+            <button id="createButton" action="categoriesDataGrid.create"/>
+            <button id="editButton" action="categoriesDataGrid.edit"/>
+            <button id="removeButton" action="categoriesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="categoriesDl"/>
         </hbox>
-        <dataGrid id="personsDataGrid"
+        <dataGrid id="categoriesDataGrid"
                   width="100%"
                   minHeight="20em"
-                  dataContainer="personsDc"
+                  dataContainer="categoriesDc"
                   columnReorderingAllowed="true">
             <actions>
                 <action id="create" type="list_create"/>
@@ -50,9 +47,8 @@
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
-                <column property="name" autoWidth="true" filterable="true"/>
-                <column property="docId" width="30px"/>
-                <column property="cellPhone" width="30px"/>
+                <column property="description"/>
+                <column property="categoryType"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

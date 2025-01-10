@@ -67,14 +67,6 @@ public class FinancialAccount {
         return category;
     }
 
-    public CategoryType getCategoryType() {
-        return category == null ? null : CategoryType.fromId(category);
-    }
-
-    public void setCategoryType(CategoryType categoryType) {
-        this.category = categoryType == null ? null : categoryType.getId();
-    }
-
     public BigDecimal getBalance() {
         return balance;
     }

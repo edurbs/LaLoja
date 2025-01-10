@@ -17,7 +17,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "INCOME_PAYMENTS", indexes = {
-        @Index(name = "IDX_INCOME_PAYMENTS_FINANCIAL_ACCOUNT", columnList = "FINANCIAL_ACCOUNT_ID")
+        @Index(name = "IDX_INCOME_PAYMENTS_FINANCIAL_ACCOUNT", columnList = "FINANCIAL_ACCOUNT_ID"),
+        @Index(name = "IDX_INCOME_PAYMENTS_INCOME", columnList = "INCOME_ID")
 })
 @Entity
 public class IncomePayment {
@@ -29,6 +30,10 @@ public class IncomePayment {
     @Column(name = "PAYMENT_DATE", nullable = false)
     @NotNull
     private Date paymentDate;
+    @JoinColumn(name = "INCOME_ID", nullable = false)
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Income income;
     @Positive(message = "Valor total do pagamento deve ser informado")
     @NotNull
     @NumberFormat(pattern = "#,##0.##", decimalSeparator = ",", groupingSeparator = ".")
@@ -46,6 +51,14 @@ public class IncomePayment {
     @DeletedDate
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
+
+    public Income getIncome() {
+        return income;
+    }
+
+    public void setIncome(Income income) {
+        this.income = income;
+    }
 
     public FinancialAccount getFinancialAccount() {
         return financialAccount;

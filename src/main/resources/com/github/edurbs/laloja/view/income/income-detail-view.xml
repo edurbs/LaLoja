@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://incomeDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="incomeDc"
+                  class="com.github.edurbs.laloja.entity.Income">
+            <fetchPlan extends="_base">
+                <property name="person" fetchPlan="_instance_name"/>
+                <property name="category" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="incomeDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="incomeDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+                <responsiveStep minWidth="40em" columns="2"/>
+            </responsiveSteps>
+            <datePicker id="referenceDateField" property="referenceDate"/>
+            <entityPicker id="personField" property="person">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <textField id="descriptionField" property="description"/>
+            <textField id="totalField" property="total"/>
+            <entityPicker id="categoryField" property="category">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseButton" action="saveAction"/>
+            <button id="closeButton" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

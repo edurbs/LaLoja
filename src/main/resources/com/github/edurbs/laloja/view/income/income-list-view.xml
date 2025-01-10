@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
-      title="msg://personListView.title"
-      focusComponent="personsDataGrid">
+      title="msg://incomeListView.title"
+      focusComponent="incomesDataGrid">
     <data>
-        <collection id="personsDc"
-                    class="com.github.edurbs.laloja.entity.Person">
-            <fetchPlan extends="_instance_name">
-                <property name="docId"/>
-                <property name="cellPhone"/>
+        <collection id="incomesDc"
+                    class="com.github.edurbs.laloja.entity.Income">
+            <fetchPlan extends="_base">
+                <property name="person" fetchPlan="_instance_name"/>
+                <property name="category" fetchPlan="_instance_name"/>
             </fetchPlan>
-            <loader id="personsDl" readOnly="true">
+            <loader id="incomesDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from Person e]]>
+                    <![CDATA[select e from Income e]]>
                 </query>
             </loader>
         </collection>
@@ -29,30 +29,35 @@
         <action id="discardAction" type="lookup_discard"/>
     </actions>
     <layout>
+        <propertyFilter dataLoader="incomesDl" operation="EQUAL" property="person" label="Pessoa" width="30em"
+                        maxWidth="100%"/>
         <genericFilter id="genericFilter"
-                       dataLoader="personsDl" visible="false">
+                       dataLoader="incomesDl" visible="false">
             <properties include=".*"/>
         </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button id="createButton" action="personsDataGrid.create"/>
-            <button id="editButton" action="personsDataGrid.edit"/>
-            <button id="removeButton" action="personsDataGrid.remove"/>
-            <simplePagination id="pagination" dataLoader="personsDl"/>
+            <button id="createButton" action="incomesDataGrid.create"/>
+            <button id="editButton" action="incomesDataGrid.edit"/>
+            <button id="removeButton" action="incomesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="incomesDl"/>
         </hbox>
-        <dataGrid id="personsDataGrid"
+        <dataGrid id="incomesDataGrid"
                   width="100%"
                   minHeight="20em"
-                  dataContainer="personsDc"
-                  columnReorderingAllowed="true">
+                  dataContainer="incomesDc"
+                  columnReorderingAllowed="true"
+                  selectionMode="MULTI">
             <actions>
                 <action id="create" type="list_create"/>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
-                <column property="name" autoWidth="true" filterable="true"/>
-                <column property="docId" width="30px"/>
-                <column property="cellPhone" width="30px"/>
+                <column property="referenceDate" filterable="true"/>
+                <column property="person" filterable="true"/>
+                <column property="description" filterable="true"/>
+                <column property="total"/>
+                <column property="category"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

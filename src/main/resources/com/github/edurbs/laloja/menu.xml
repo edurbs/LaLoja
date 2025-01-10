@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/flowui/menu">
 
-    <menu id="application" title="msg://com.github.edurbs.laloja/menu.application.title" opened="true">
+    <menu id="application" title="Aplicação" opened="true">
         <item view="User.list" title="msg://com.github.edurbs.laloja.view.user/UserListView.title"/>
-        <item view="Person.list" title="msg://com.github.edurbs.laloja.view.person/personListView.title"/>
+        <item view="Person.list" title="Pessoas"/>
+        <item view="Income.list" title="msg://com.github.edurbs.laloja.view.income/incomeListView.title"/>
+        <item view="IncomePayment.list"
+              title="msg://com.github.edurbs.laloja.view.incomepayment/incomePaymentListView.title"/>
+        <item view="FinancialAccount.list"
+              title="msg://com.github.edurbs.laloja.view.financialaccount/financialAccountListView.title"/>
+        <item view="Category.list" title="Categorias"/>
     </menu>
 
 </menu-config>
